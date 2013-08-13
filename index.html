@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<title>Lesson1</title>
+
+<meta name="viewport" content="width=320,initial-scale=1" />
+<!--<meta name="viewport" content="width=device-width, ">-->
+<link rel="stylesheet" type="txt/css" href="css/jquerymobilecss.css"/>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquerymobile.js"></script>
+<script type="text/javascript" src="swipe.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+
+</head>
+
+<script>
+
+$(function(){
+
+
+
+window.mySwipe = new Swipe(document.getElementById('slider'), {
+  startSlide: 0,
+  speed: 400,
+  auto: 0,
+  continuous: true,
+  disableScroll: false,
+  stopPropagation: false,
+  callback: function(index, elem) {},
+  transitionEnd: function(index, elem) {}
+
+
+});
+
+
+ $( ".swipe-wrap" ).bind("swiperight",function(){
+window.mySwipe.prev();
+changeText(window.mySwipe.getPos());
+ });
+
+ $( ".swipe-wrap" ).bind("swipeleft",function(){
+
+window.mySwipe.next();
+//console.log(window.mySwipe);
+changeText(window.mySwipe.getPos());
+//console.log(window.mySwipe.getPos());
+
+ });
+
+//////////Would be used to change the text which is there
+function changeText(indexToChange)
+{
+	
+var myCars=new Array("Collaboration is built on trust","Get Latest 24 hour Updates","Notifications on the go","Make the most of your energy");
+$("#changingText").text(myCars[indexToChange]);
+
+
+
+
+}
+///////////////////////////////////////////////////////////
+
+});
+
+</script>
+
+<style>
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+  background-color: black;
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+  background-color: blue;
+
+}
+.swipe-wrap > div {
+  float:left;
+  width:100%;
+  position: relative;
+  background-color: yellow;
+}
+.bottomContainer{
+	width:320px; 
+	position:relative;
+	text-align:center;
+	height:150px; 
+}
+</style>
+
+<body class="ui-mobile-viewport">
+
+	<div id="pagehome"  data-role="page"  data-title="pagehome" data-theme="b" >
+		
+		
+
+
+		<div data-role="content" style="padding:0px" >
+
+			<div id='slider' class='swipe' style="padding 0px;height:300px">
+			  <div class='swipe-wrap' id="swipecontainer" >
+			    <div ><img src="css/images/page1/image4.jpg" style="width:320px"></div>
+			    <div ><img src="css/images/page1/image3.jpg" style="width:320px" ></div>
+			    <div ><img src="css/images/page1/image2.jpg" style="width:320px"></div>
+			    <div ><img src="css/images/page1/image1.jpg" style="width:320px" ></div>
+			  </div>
+			</div>
+
+		</div>
+
+		<div class='bottomContainer'>
+			
+			<div id="changingText" style="padding:20px">Collaboration Starts with trust</div>
+			<div id="enterButton" data-role="button" data-inline="true" style="margin:20px">Enter</div>
+		</div>
+
+		<div data-role="footer" data-position="fixed">
+			<h1>Trust-IPO</h1>
+		</div>
+
+	</div>
+
+	<!-- Second page-->
+
+	<div data-role="page" id="pagecontact" data-title="pagecontact">
+		
+		<div data-role="header"><h1>Page2</h1></div>
+		<div data-role="content"><h2>Welcome to the second page</h2></div>
+		<div data-role="footer" data-position="fixed"><h1>footer</h1></div>
+	</div>
+
+
+</body>
+
+
+</html>
